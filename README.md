@@ -34,27 +34,30 @@ Main goals of this project:
    make BR2_EXTERNAL=(pwd)/../licheepi-tree/ ../licheepi-tree/configs/licheepi.config
    ```
 
+   You can check output/.br2-external.mk to see if external tree was initialized.
+
 3. Prepare to build
 
    ```bash
-   make linux-menuconfig
+   make source
    cd ../licheepi-tree/setup/
    ./kernel-add-esp8089.sh
    cd ../
    ```
 
-   Check packages in linux-menuconfig and after that
+   Check packages in linux-menuconfig and make:
 
    ```bash
    cd ../buildroot
+   make linux-menuconfig
    make
-   ```
-
-   Choose disk where to write image (e.g. /dev/sdc/)
-
+```
+   
+Choose disk where to write image (e.g. /dev/sdc/)
+   
    ```bash
    cd ../licheepi-tree/setup/
    ./target_load.sh "/dev/sdc"
-   ```
-
+```
+   
    

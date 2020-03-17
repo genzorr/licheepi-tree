@@ -1,8 +1,20 @@
 #!/bin/sh
 
+# Kernel modules
 modprobe g_serial
 #/sbin/getty -L /dev/ttyGS0 115200 vt100
 
 modprobe cfg80211
 modprobe mac80211
 modprobe esp8089
+
+
+# Audio support
+amixer set 'Headphone' on
+amixer set 'Headphone' 50%
+amixer sset 'Headphone Source',0 'DAC','DAC'
+amixer set 'DAC' on
+amixer set 'DAC Reversed' on
+amixer set 'Mic1' on
+amixer set 'Mic1' 100%
+amixer set 'Mic1' cap

@@ -1,2 +1,0 @@
-# LINUX_OVERRIDE_SRCDIR = $(TOPDIR)/../linux-zero-4.13.y
-# LINUX_OVERRIDE_SRCDIR_RSYNC_EXCLUSIONS = --include .git

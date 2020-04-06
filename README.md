@@ -17,45 +17,34 @@ Main goals of this project:
 
 ## Installation
 
-1. Clone project to the same directory as [Buildroot](https://github.com/buildroot/buildroot)
+1. Clone project next to [Buildroot](https://github.com/buildroot/buildroot)
 
    ```bash
    git clone https://github.com/korr237i/licheepi-tree.git
    ```
 
-   
-
-2. Initialize tree as external (fish shell)
+2. Initialize tree as external (fish shell, in buildroot directory)
 
    ```bash
-   cd buildroot/
-   cp ../licheepi-tree/configs/licheepi.config .config
    make BR2_EXTERNAL=(pwd)/../licheepi-tree/ ../licheepi-tree/configs/licheepi.config
    ```
-
-   You can check output/.br2-external.mk to see if external tree was initialized.
-
-3. Prepare to build
-
-   ```bash
-   make source
-   cd ../licheepi-tree/setup/
-   ./kernel-add-esp8089.sh
-   cd ../
-   ```
-
-   Check packages in linux-menuconfig and make:
-
-   ```bash
-   cd ../buildroot
-   make linux-menuconfig
-   make
-   ```
    
+   You can check output/.br2-external.mk to see if external tree was initialized correctly.
 
-Choose disk where to write image (e.g. /dev/sdc/)
+3. Run `make menuconfig`  to initialize buildroot and merge config from external tree:
 
    ```bash
-   cd ../licheepi-tree/setup/
-   ./target_load.sh "/dev/sdc"
+   support/kconfig/merge_config.sh .config ../licheepi-tree/configs/licheepi.config
    ```
+
+4. Run `make linux-menuconfig` and save linux configuration obtained from external tree.
+
+5. Add esp8089 driver to kernel: in setup, run `./kernel-add-esp8089.sh`, and enable esp8089 package in `Networking support / Wireless` as kernel module.
+
+6. Run `make`
+
+7. Write image on disk (e.g. /dev/sdc/)
+    ```bash
+    cd ../licheepi-tree/setup/
+    ./target_load.sh "/dev/sdc"
+    ```

@@ -12,7 +12,6 @@ Main goals of this project:
 
 1. **board** - Linux config for Buildroot
 2. **configs** - Buildroot config
-3. **esp8089** - firmware for esp8089 to be loaded to device
 4. **rootfs_overlay** - needed files to be replaced in target filesystem
 5. **setup** - scripts and files used to setup installation and prepare image
 
@@ -51,13 +50,12 @@ Main goals of this project:
    cd ../buildroot
    make linux-menuconfig
    make
-```
+   ```
    
+
 Choose disk where to write image (e.g. /dev/sdc/)
-   
+
    ```bash
    cd ../licheepi-tree/setup/
    ./target_load.sh "/dev/sdc"
-```
-   
-   
+   ```

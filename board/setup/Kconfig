@@ -383,7 +383,7 @@ if WIRELESS
 source "net/wireless/Kconfig"
 source "net/mac80211/Kconfig"
 
-sourse "net/esp8089/Kconfig"
+source "net/esp8089/Kconfig"
 
 endif # WIRELESS
 

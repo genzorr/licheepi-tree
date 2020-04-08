@@ -45,3 +45,9 @@ Main goals of this project:
     ```bash
     ./target_load.sh "/dev/sdc"
     ```
+    
+    To update filesystem on remote working machine, in `licheepi-tree/board/`, run:
+    
+    ```bash
+     ./target_load_remote.sh port_number hostname password
+    ```

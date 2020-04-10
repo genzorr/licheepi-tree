@@ -4,8 +4,8 @@
 modprobe g_serial
 #/sbin/getty -L /dev/ttyGS0 115200 vt100
 
-modprobe cfg80211
-modprobe mac80211
+#modprobe cfg80211
+#modprobe mac80211
 modprobe esp8089
 
 

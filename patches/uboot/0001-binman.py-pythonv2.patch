@@ -1,0 +1,23 @@
+--- a/tools/binman/binman.py	2017-08-12 12:24:24.000000000 +0300
++++ b/tools/binman/binman.py	2020-10-15 23:55:39.525086725 +0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/env python2
+ 
+ # Copyright (c) 2016 Google, Inc
+ # Written by Simon Glass <sjg@chromium.org>
+@@ -19,6 +19,7 @@
+ our_path = os.path.dirname(os.path.realpath(__file__))
+ sys.path.append(os.path.join(our_path, '../patman'))
+ sys.path.append(os.path.join(our_path, '../dtoc'))
++sys.path.append(os.path.join(our_path, '../'))
+ 
+ # Also allow entry-type modules to be brought in from the etype directory.
+ sys.path.append(os.path.join(our_path, 'etype'))
+@@ -111,4 +112,4 @@
+ if __name__ == "__main__":
+     (options, args) = cmdline.ParseArgs(sys.argv)
+     ret_code = RunBinman(options, args)
+-    sys.exit(ret_code)
++    sys.exit(ret_code)
+\ No newline at end of file

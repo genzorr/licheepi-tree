@@ -1,0 +1,722 @@
+--- a/scripts/dtc/dtc-parser.tab.c_shipped	2018-01-18 05:49:02.000000000 +0300
++++ b/scripts/dtc/dtc-parser.tab.c_shipped	2020-10-16 01:34:01.971790747 +0300
+@@ -73,10 +73,10 @@
+ extern int yylex(void);
+ extern void yyerror(char const *s);
+ #define ERROR(loc, ...) \
+-	do { \
+-		srcpos_error((loc), "Error", __VA_ARGS__); \
+-		treesource_error = true; \
+-	} while (0)
++  do { \
++    srcpos_error((loc), "Error", __VA_ARGS__); \
++    treesource_error = true; \
++  } while (0)
+ 
+ extern struct dt_info *parser_output;
+ extern bool treesource_error;
+@@ -148,23 +148,23 @@
+ {
+ #line 39 "dtc-parser.y" /* yacc.c:355  */
+ 
+-	char *propnodename;
+-	char *labelref;
+-	uint8_t byte;
+-	struct data data;
+-
+-	struct {
+-		struct data	data;
+-		int		bits;
+-	} array;
+-
+-	struct property *prop;
+-	struct property *proplist;
+-	struct node *node;
+-	struct node *nodelist;
+-	struct reserve_info *re;
+-	uint64_t integer;
+-	unsigned int flags;
++  char *propnodename;
++  char *labelref;
++  uint8_t byte;
++  struct data data;
++
++  struct {
++    struct data data;
++    int   bits;
++  } array;
++
++  struct property *prop;
++  struct property *proplist;
++  struct node *node;
++  struct node *nodelist;
++  struct reserve_info *re;
++  uint64_t integer;
++  unsigned int flags;
+ 
+ #line 170 "dtc-parser.tab.c" /* yacc.c:355  */
+ };
+@@ -1202,7 +1202,7 @@
+ /* The semantic value of the lookahead symbol.  */
+ YYSTYPE yylval;
+ /* Location data for the lookahead symbol.  */
+-YYLTYPE yylloc
++extern YYLTYPE yylloc
+ # if defined YYLTYPE_IS_TRIVIAL && YYLTYPE_IS_TRIVIAL
+   = { 1, 1, 1, 1 }
+ # endif
+@@ -1471,370 +1471,370 @@
+         case 2:
+ #line 110 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			parser_output = build_dt_info((yyvsp[-2].flags), (yyvsp[-1].re), (yyvsp[0].node),
+-			                              guess_boot_cpuid((yyvsp[0].node)));
+-		}
++      parser_output = build_dt_info((yyvsp[-2].flags), (yyvsp[-1].re), (yyvsp[0].node),
++                                    guess_boot_cpuid((yyvsp[0].node)));
++    }
+ #line 1478 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 3:
+ #line 118 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.flags) = DTSF_V1;
+-		}
++      (yyval.flags) = DTSF_V1;
++    }
+ #line 1486 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 4:
+ #line 122 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.flags) = DTSF_V1 | DTSF_PLUGIN;
+-		}
++      (yyval.flags) = DTSF_V1 | DTSF_PLUGIN;
++    }
+ #line 1494 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 6:
+ #line 130 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			if ((yyvsp[0].flags) != (yyvsp[-1].flags))
+-				ERROR(&(yylsp[0]), "Header flags don't match earlier ones");
+-			(yyval.flags) = (yyvsp[-1].flags);
+-		}
++      if ((yyvsp[0].flags) != (yyvsp[-1].flags))
++        ERROR(&(yylsp[0]), "Header flags don't match earlier ones");
++      (yyval.flags) = (yyvsp[-1].flags);
++    }
+ #line 1504 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 7:
+ #line 139 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.re) = NULL;
+-		}
++      (yyval.re) = NULL;
++    }
+ #line 1512 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 8:
+ #line 143 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.re) = chain_reserve_entry((yyvsp[-1].re), (yyvsp[0].re));
+-		}
++      (yyval.re) = chain_reserve_entry((yyvsp[-1].re), (yyvsp[0].re));
++    }
+ #line 1520 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 9:
+ #line 150 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.re) = build_reserve_entry((yyvsp[-2].integer), (yyvsp[-1].integer));
+-		}
++      (yyval.re) = build_reserve_entry((yyvsp[-2].integer), (yyvsp[-1].integer));
++    }
+ #line 1528 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 10:
+ #line 154 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			add_label(&(yyvsp[0].re)->labels, (yyvsp[-1].labelref));
+-			(yyval.re) = (yyvsp[0].re);
+-		}
++      add_label(&(yyvsp[0].re)->labels, (yyvsp[-1].labelref));
++      (yyval.re) = (yyvsp[0].re);
++    }
+ #line 1537 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 11:
+ #line 162 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.node) = name_node((yyvsp[0].node), "");
+-		}
++      (yyval.node) = name_node((yyvsp[0].node), "");
++    }
+ #line 1545 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 12:
+ #line 166 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.node) = merge_nodes((yyvsp[-2].node), (yyvsp[0].node));
+-		}
++      (yyval.node) = merge_nodes((yyvsp[-2].node), (yyvsp[0].node));
++    }
+ #line 1553 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 13:
+ #line 171 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			struct node *target = get_node_by_ref((yyvsp[-3].node), (yyvsp[-1].labelref));
++      struct node *target = get_node_by_ref((yyvsp[-3].node), (yyvsp[-1].labelref));
+ 
+-			if (target) {
+-				add_label(&target->labels, (yyvsp[-2].labelref));
+-				merge_nodes(target, (yyvsp[0].node));
+-			} else
+-				ERROR(&(yylsp[-1]), "Label or path %s not found", (yyvsp[-1].labelref));
+-			(yyval.node) = (yyvsp[-3].node);
+-		}
++      if (target) {
++        add_label(&target->labels, (yyvsp[-2].labelref));
++        merge_nodes(target, (yyvsp[0].node));
++      } else
++        ERROR(&(yylsp[-1]), "Label or path %s not found", (yyvsp[-1].labelref));
++      (yyval.node) = (yyvsp[-3].node);
++    }
+ #line 1568 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 14:
+ #line 182 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			struct node *target = get_node_by_ref((yyvsp[-2].node), (yyvsp[-1].labelref));
++      struct node *target = get_node_by_ref((yyvsp[-2].node), (yyvsp[-1].labelref));
+ 
+-			if (target)
+-				merge_nodes(target, (yyvsp[0].node));
+-			else
+-				ERROR(&(yylsp[-1]), "Label or path %s not found", (yyvsp[-1].labelref));
+-			(yyval.node) = (yyvsp[-2].node);
+-		}
++      if (target)
++        merge_nodes(target, (yyvsp[0].node));
++      else
++        ERROR(&(yylsp[-1]), "Label or path %s not found", (yyvsp[-1].labelref));
++      (yyval.node) = (yyvsp[-2].node);
++    }
+ #line 1582 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 15:
+ #line 192 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			struct node *target = get_node_by_ref((yyvsp[-3].node), (yyvsp[-1].labelref));
++      struct node *target = get_node_by_ref((yyvsp[-3].node), (yyvsp[-1].labelref));
+ 
+-			if (target)
+-				delete_node(target);
+-			else
+-				ERROR(&(yylsp[-1]), "Label or path %s not found", (yyvsp[-1].labelref));
++      if (target)
++        delete_node(target);
++      else
++        ERROR(&(yylsp[-1]), "Label or path %s not found", (yyvsp[-1].labelref));
+ 
+ 
+-			(yyval.node) = (yyvsp[-3].node);
+-		}
++      (yyval.node) = (yyvsp[-3].node);
++    }
+ #line 1598 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 16:
+ #line 207 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.node) = build_node((yyvsp[-3].proplist), (yyvsp[-2].nodelist));
+-		}
++      (yyval.node) = build_node((yyvsp[-3].proplist), (yyvsp[-2].nodelist));
++    }
+ #line 1606 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 17:
+ #line 214 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.proplist) = NULL;
+-		}
++      (yyval.proplist) = NULL;
++    }
+ #line 1614 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 18:
+ #line 218 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.proplist) = chain_property((yyvsp[0].prop), (yyvsp[-1].proplist));
+-		}
++      (yyval.proplist) = chain_property((yyvsp[0].prop), (yyvsp[-1].proplist));
++    }
+ #line 1622 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 19:
+ #line 225 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.prop) = build_property((yyvsp[-3].propnodename), (yyvsp[-1].data));
+-		}
++      (yyval.prop) = build_property((yyvsp[-3].propnodename), (yyvsp[-1].data));
++    }
+ #line 1630 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 20:
+ #line 229 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.prop) = build_property((yyvsp[-1].propnodename), empty_data);
+-		}
++      (yyval.prop) = build_property((yyvsp[-1].propnodename), empty_data);
++    }
+ #line 1638 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 21:
+ #line 233 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.prop) = build_property_delete((yyvsp[-1].propnodename));
+-		}
++      (yyval.prop) = build_property_delete((yyvsp[-1].propnodename));
++    }
+ #line 1646 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 22:
+ #line 237 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			add_label(&(yyvsp[0].prop)->labels, (yyvsp[-1].labelref));
+-			(yyval.prop) = (yyvsp[0].prop);
+-		}
++      add_label(&(yyvsp[0].prop)->labels, (yyvsp[-1].labelref));
++      (yyval.prop) = (yyvsp[0].prop);
++    }
+ #line 1655 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 23:
+ #line 245 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.data) = data_merge((yyvsp[-1].data), (yyvsp[0].data));
+-		}
++      (yyval.data) = data_merge((yyvsp[-1].data), (yyvsp[0].data));
++    }
+ #line 1663 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 24:
+ #line 249 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.data) = data_merge((yyvsp[-2].data), (yyvsp[-1].array).data);
+-		}
++      (yyval.data) = data_merge((yyvsp[-2].data), (yyvsp[-1].array).data);
++    }
+ #line 1671 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 25:
+ #line 253 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.data) = data_merge((yyvsp[-3].data), (yyvsp[-1].data));
+-		}
++      (yyval.data) = data_merge((yyvsp[-3].data), (yyvsp[-1].data));
++    }
+ #line 1679 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 26:
+ #line 257 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.data) = data_add_marker((yyvsp[-1].data), REF_PATH, (yyvsp[0].labelref));
+-		}
++      (yyval.data) = data_add_marker((yyvsp[-1].data), REF_PATH, (yyvsp[0].labelref));
++    }
+ #line 1687 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 27:
+ #line 261 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			FILE *f = srcfile_relative_open((yyvsp[-5].data).val, NULL);
+-			struct data d;
++      FILE *f = srcfile_relative_open((yyvsp[-5].data).val, NULL);
++      struct data d;
+ 
+-			if ((yyvsp[-3].integer) != 0)
+-				if (fseek(f, (yyvsp[-3].integer), SEEK_SET) != 0)
+-					die("Couldn't seek to offset %llu in \"%s\": %s",
+-					    (unsigned long long)(yyvsp[-3].integer), (yyvsp[-5].data).val,
+-					    strerror(errno));
+-
+-			d = data_copy_file(f, (yyvsp[-1].integer));
+-
+-			(yyval.data) = data_merge((yyvsp[-8].data), d);
+-			fclose(f);
+-		}
++      if ((yyvsp[-3].integer) != 0)
++        if (fseek(f, (yyvsp[-3].integer), SEEK_SET) != 0)
++          die("Couldn't seek to offset %llu in \"%s\": %s",
++              (unsigned long long)(yyvsp[-3].integer), (yyvsp[-5].data).val,
++              strerror(errno));
++
++      d = data_copy_file(f, (yyvsp[-1].integer));
++
++      (yyval.data) = data_merge((yyvsp[-8].data), d);
++      fclose(f);
++    }
+ #line 1707 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 28:
+ #line 277 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			FILE *f = srcfile_relative_open((yyvsp[-1].data).val, NULL);
+-			struct data d = empty_data;
++      FILE *f = srcfile_relative_open((yyvsp[-1].data).val, NULL);
++      struct data d = empty_data;
+ 
+-			d = data_copy_file(f, -1);
++      d = data_copy_file(f, -1);
+ 
+-			(yyval.data) = data_merge((yyvsp[-4].data), d);
+-			fclose(f);
+-		}
++      (yyval.data) = data_merge((yyvsp[-4].data), d);
++      fclose(f);
++    }
+ #line 1721 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 29:
+ #line 287 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.data) = data_add_marker((yyvsp[-1].data), LABEL, (yyvsp[0].labelref));
+-		}
++      (yyval.data) = data_add_marker((yyvsp[-1].data), LABEL, (yyvsp[0].labelref));
++    }
+ #line 1729 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 30:
+ #line 294 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.data) = empty_data;
+-		}
++      (yyval.data) = empty_data;
++    }
+ #line 1737 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 31:
+ #line 298 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.data) = (yyvsp[-1].data);
+-		}
++      (yyval.data) = (yyvsp[-1].data);
++    }
+ #line 1745 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 32:
+ #line 302 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.data) = data_add_marker((yyvsp[-1].data), LABEL, (yyvsp[0].labelref));
+-		}
++      (yyval.data) = data_add_marker((yyvsp[-1].data), LABEL, (yyvsp[0].labelref));
++    }
+ #line 1753 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 33:
+ #line 309 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			unsigned long long bits;
++      unsigned long long bits;
++
++      bits = (yyvsp[-1].integer);
+ 
+-			bits = (yyvsp[-1].integer);
++      if ((bits !=  8) && (bits != 16) &&
++          (bits != 32) && (bits != 64)) {
++        ERROR(&(yylsp[-1]), "Array elements must be"
++              " 8, 16, 32 or 64-bits");
++        bits = 32;
++      }
+ 
+-			if ((bits !=  8) && (bits != 16) &&
+-			    (bits != 32) && (bits != 64)) {
+-				ERROR(&(yylsp[-1]), "Array elements must be"
+-				      " 8, 16, 32 or 64-bits");
+-				bits = 32;
+-			}
+-
+-			(yyval.array).data = empty_data;
+-			(yyval.array).bits = bits;
+-		}
++      (yyval.array).data = empty_data;
++      (yyval.array).bits = bits;
++    }
+ #line 1773 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 34:
+ #line 325 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.array).data = empty_data;
+-			(yyval.array).bits = 32;
+-		}
++      (yyval.array).data = empty_data;
++      (yyval.array).bits = 32;
++    }
+ #line 1782 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 35:
+ #line 330 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			if ((yyvsp[-1].array).bits < 64) {
+-				uint64_t mask = (1ULL << (yyvsp[-1].array).bits) - 1;
+-				/*
+-				 * Bits above mask must either be all zero
+-				 * (positive within range of mask) or all one
+-				 * (negative and sign-extended). The second
+-				 * condition is true if when we set all bits
+-				 * within the mask to one (i.e. | in the
+-				 * mask), all bits are one.
+-				 */
+-				if (((yyvsp[0].integer) > mask) && (((yyvsp[0].integer) | mask) != -1ULL))
+-					ERROR(&(yylsp[0]), "Value out of range for"
+-					      " %d-bit array element", (yyvsp[-1].array).bits);
+-			}
++      if ((yyvsp[-1].array).bits < 64) {
++        uint64_t mask = (1ULL << (yyvsp[-1].array).bits) - 1;
++        /*
++         * Bits above mask must either be all zero
++         * (positive within range of mask) or all one
++         * (negative and sign-extended). The second
++         * condition is true if when we set all bits
++         * within the mask to one (i.e. | in the
++         * mask), all bits are one.
++         */
++        if (((yyvsp[0].integer) > mask) && (((yyvsp[0].integer) | mask) != -1ULL))
++          ERROR(&(yylsp[0]), "Value out of range for"
++                " %d-bit array element", (yyvsp[-1].array).bits);
++      }
+ 
+-			(yyval.array).data = data_append_integer((yyvsp[-1].array).data, (yyvsp[0].integer), (yyvsp[-1].array).bits);
+-		}
++      (yyval.array).data = data_append_integer((yyvsp[-1].array).data, (yyvsp[0].integer), (yyvsp[-1].array).bits);
++    }
+ #line 1805 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 36:
+ #line 349 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			uint64_t val = ~0ULL >> (64 - (yyvsp[-1].array).bits);
++      uint64_t val = ~0ULL >> (64 - (yyvsp[-1].array).bits);
+ 
+-			if ((yyvsp[-1].array).bits == 32)
+-				(yyvsp[-1].array).data = data_add_marker((yyvsp[-1].array).data,
+-							  REF_PHANDLE,
+-							  (yyvsp[0].labelref));
+-			else
+-				ERROR(&(yylsp[0]), "References are only allowed in "
+-					    "arrays with 32-bit elements.");
++      if ((yyvsp[-1].array).bits == 32)
++        (yyvsp[-1].array).data = data_add_marker((yyvsp[-1].array).data,
++                REF_PHANDLE,
++                (yyvsp[0].labelref));
++      else
++        ERROR(&(yylsp[0]), "References are only allowed in "
++              "arrays with 32-bit elements.");
+ 
+-			(yyval.array).data = data_append_integer((yyvsp[-1].array).data, val, (yyvsp[-1].array).bits);
+-		}
++      (yyval.array).data = data_append_integer((yyvsp[-1].array).data, val, (yyvsp[-1].array).bits);
++    }
+ #line 1823 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 37:
+ #line 363 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.array).data = data_add_marker((yyvsp[-1].array).data, LABEL, (yyvsp[0].labelref));
+-		}
++      (yyval.array).data = data_add_marker((yyvsp[-1].array).data, LABEL, (yyvsp[0].labelref));
++    }
+ #line 1831 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 40:
+ #line 372 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.integer) = (yyvsp[-1].integer);
+-		}
++      (yyval.integer) = (yyvsp[-1].integer);
++    }
+ #line 1839 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+@@ -1943,26 +1943,26 @@
+   case 69:
+ #line 440 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			if ((yyvsp[0].integer) != 0) {
+-				(yyval.integer) = (yyvsp[-2].integer) / (yyvsp[0].integer);
+-			} else {
+-				ERROR(&(yyloc), "Division by zero");
+-				(yyval.integer) = 0;
+-			}
+-		}
++      if ((yyvsp[0].integer) != 0) {
++        (yyval.integer) = (yyvsp[-2].integer) / (yyvsp[0].integer);
++      } else {
++        ERROR(&(yyloc), "Division by zero");
++        (yyval.integer) = 0;
++      }
++    }
+ #line 1954 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 70:
+ #line 449 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			if ((yyvsp[0].integer) != 0) {
+-				(yyval.integer) = (yyvsp[-2].integer) % (yyvsp[0].integer);
+-			} else {
+-				ERROR(&(yyloc), "Division by zero");
+-				(yyval.integer) = 0;
+-			}
+-		}
++      if ((yyvsp[0].integer) != 0) {
++        (yyval.integer) = (yyvsp[-2].integer) % (yyvsp[0].integer);
++      } else {
++        ERROR(&(yyloc), "Division by zero");
++        (yyval.integer) = 0;
++      }
++    }
+ #line 1967 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+@@ -1987,74 +1987,74 @@
+   case 76:
+ #line 469 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.data) = empty_data;
+-		}
++      (yyval.data) = empty_data;
++    }
+ #line 1993 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 77:
+ #line 473 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.data) = data_append_byte((yyvsp[-1].data), (yyvsp[0].byte));
+-		}
++      (yyval.data) = data_append_byte((yyvsp[-1].data), (yyvsp[0].byte));
++    }
+ #line 2001 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 78:
+ #line 477 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.data) = data_add_marker((yyvsp[-1].data), LABEL, (yyvsp[0].labelref));
+-		}
++      (yyval.data) = data_add_marker((yyvsp[-1].data), LABEL, (yyvsp[0].labelref));
++    }
+ #line 2009 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 79:
+ #line 484 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.nodelist) = NULL;
+-		}
++      (yyval.nodelist) = NULL;
++    }
+ #line 2017 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 80:
+ #line 488 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.nodelist) = chain_node((yyvsp[-1].node), (yyvsp[0].nodelist));
+-		}
++      (yyval.nodelist) = chain_node((yyvsp[-1].node), (yyvsp[0].nodelist));
++    }
+ #line 2025 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 81:
+ #line 492 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			ERROR(&(yylsp[0]), "Properties must precede subnodes");
+-			YYERROR;
+-		}
++      ERROR(&(yylsp[0]), "Properties must precede subnodes");
++      YYERROR;
++    }
+ #line 2034 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 82:
+ #line 500 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.node) = name_node((yyvsp[0].node), (yyvsp[-1].propnodename));
+-		}
++      (yyval.node) = name_node((yyvsp[0].node), (yyvsp[-1].propnodename));
++    }
+ #line 2042 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 83:
+ #line 504 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			(yyval.node) = name_node(build_node_delete(), (yyvsp[-1].propnodename));
+-		}
++      (yyval.node) = name_node(build_node_delete(), (yyvsp[-1].propnodename));
++    }
+ #line 2050 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+   case 84:
+ #line 508 "dtc-parser.y" /* yacc.c:1646  */
+     {
+-			add_label(&(yyvsp[0].node)->labels, (yyvsp[-1].labelref));
+-			(yyval.node) = (yyvsp[0].node);
+-		}
++      add_label(&(yyvsp[0].node)->labels, (yyvsp[-1].labelref));
++      (yyval.node) = (yyvsp[0].node);
++    }
+ #line 2059 "dtc-parser.tab.c" /* yacc.c:1646  */
+     break;
+ 
+@@ -2299,5 +2299,5 @@
+ 
+ void yyerror(char const *s)
+ {
+-	ERROR(&yylloc, "%s", s);
++  ERROR(&yylloc, "%s", s);
+ }

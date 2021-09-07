@@ -49,5 +49,14 @@ Main goals of this project:
     To update filesystem on remote working machine, in `licheepi-tree/board/`, run:
     
     ```bash
-     ./target_load_remote.sh port_number hostname password
+    ./target_load_remote.sh port_number hostname password
     ```
+
+## Additional configuration
+
+Virtual devices using socat
+
+```
+socat -d -d pty,link=/dev/ttyL0,raw,echo=0,mode=666 pty,link=/dev/ttyL1,raw,echo=0,mode=666
+```
+
